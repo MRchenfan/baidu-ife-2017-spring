@@ -1,0 +1,23 @@
+{
+  "name": "baidu-ife-2017-spring",
+  "version": "1.0.0",
+  "description": "baidu ife 2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MRchenfan/baidu-ife-2017-spring.git"
+  },
+  "keywords": [
+    "baidu",
+    "ife"
+  ],
+  "author": "Damon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MRchenfan/baidu-ife-2017-spring/issues"
+  },
+  "homepage": "https://github.com/MRchenfan/baidu-ife-2017-spring#readme"
+}

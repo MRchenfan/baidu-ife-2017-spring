@@ -1,0 +1,21 @@
+{
+  "name": "baidu-ife-2017-spring",
+  "description": "baidu ife 2017",
+  "main": "index.js",
+  "authors": [
+    "Damon"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "baidu",
+    "ife"
+  ],
+  "homepage": "https://github.com/MRchenfan/baidu-ife-2017-spring",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
