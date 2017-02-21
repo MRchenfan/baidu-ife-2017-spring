@@ -1,5 +1,5 @@
 # baidu-ife-2017-spring
-[baidu ife 2017 spring front-end classes](src)
+[baidu ife 2017 spring front-end classes](https://mrchenfan.github.io/baidu-ife-2017-spring/src/)
 
 ----
 
