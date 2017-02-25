@@ -225,6 +225,9 @@ geometry.faces.push(new THREE.Face3(0, 4, 5));
 geometry.faces.push(new THREE.Face3(0, 5, 1));
 ```
 
+## 总结
+1. 新建的物体和场景的原点都是在中心
+2. 创建过程：renderer => scene => camera => geometry => mesh object => render
 
 
 

@@ -1,0 +1,79 @@
+.form-1 {
+	$color-check: #c7254e;
+	input[type="radio"],
+	input[type="checkbox"] {
+		display: none !important;
+	}
+	input[type="radio"] + .radio-style,
+	input[type="checkbox"] + .checkbox-style {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		border: 1px solid $color-check;
+		border-radius: 50%;
+		vertical-align: baseline;
+		position: relative;
+	}
+
+	input[type="checkbox"] + .checkbox-style {
+		border-radius: 10%;
+	}
+
+	input[type="radio"]:checked + .radio-style {
+		&:after {
+			content: "";
+			display: inline-block;
+			width: 0.4em;
+			height: 0.4em;
+			border-radius: 50%;
+			background: $color-check;
+
+			position: absolute;
+			top: 0.3em;
+			left: 0.3em;
+		}
+	}
+
+	input[type="checkbox"]:checked + .checkbox-style {
+		background-image: url("../img/check00003.png");
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	}
+}
+
+.form-2 {
+	$color-check: #c7254e;
+	input[type="radio"],
+	input[type="checkbox"] {
+		display: none !important;
+	}
+	input[type="radio"] + .radio-style,
+	input[type="checkbox"] + .checkbox-style {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 100% 100%;
+	}
+
+	input[type="radio"] + .radio-style {
+		background-image: url("../img/check00002.png");
+	}
+
+	input[type="checkbox"] + .checkbox-style {
+		background-image: url("../img/check00001.png");
+	}
+
+	input[type="radio"]:checked + .radio-style {
+		background-image: url("../img/check00004.png");
+	}
+
+	input[type="checkbox"]:checked + .checkbox-style {
+		background-image: url("../img/check00005.png");
+	}
+}
+
+
+
