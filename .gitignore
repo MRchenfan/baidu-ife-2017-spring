@@ -1,9 +1,6 @@
 # github
 github/
 
-# bower
-lib/
-
 # Logs
 logs
 *.log
