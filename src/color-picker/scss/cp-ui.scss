@@ -1,0 +1,107 @@
+$cp-height: 300px;
+$cp-font-size: 0.08 * $cp-height;
+
+.cp-container {
+	* {
+		box-sizing: border-box;
+	}
+	width: 1.65 * $cp-height;
+	height: $cp-height;
+	font-size: $cp-font-size;
+	color: #666;
+
+	.cp-panel {
+		float: left;
+		width: $cp-height;
+		height: $cp-height;
+		position: relative;
+		canvas {
+			width: 100%;
+			height: 100%;
+			background: #999;
+		}
+		.cp-panel-picker {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			border: 1px solid #FFF;
+			background: #000;
+
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		}
+	}
+
+	.cp-bar {
+		float: left;
+		width: 0.15 * $cp-height;
+		height: $cp-height;
+		padding-left: 0.04 * $cp-height;
+		padding-right: 0.04 * $cp-height;
+		position: relative;
+		canvas {
+			width: 100%;
+			height: 100%;
+			background: #999;
+		}
+		.cp-bar-picker {
+			width: 0.11 * $cp-height;
+			height: 5px;
+			border: 1px solid #FFF;
+			background: #000;
+			position: absolute;
+			top: 10%;
+			left: 0.02 * $cp-height;
+		}
+	}
+
+	.cp-form {
+		float: left;
+		width: 0.5 * $cp-height;
+
+		label {
+			display: block;
+
+			span {
+				display: inline-block;
+				width: 20%;
+				float: left;
+			}
+			input {
+				display: inline-block;
+				width: 80%;
+				float: left;
+			}
+			&::after {
+				display: block;
+				clear: both;
+				content: '';
+				height: 0;
+			}
+		}
+
+		.cp-form-rgb,
+		.cp-form-hsl {
+			height: 50%;
+		}
+		.cp-form-rgb {
+			border-bottom: 1px solid #666;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

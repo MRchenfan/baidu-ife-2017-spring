@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>color-picker</title>
+	<link rel="stylesheet" href="css/cp-ui.css">
+</head>
+<body>
+	
+	<div class="cp-container">
+		<div class="cp-panel">
+			<canvas class="cp-panel-canvas"></canvas>
+			<div class="cp-panel-picker"></div>
+		</div>
+		<div class="cp-bar">
+			<canvas class="cp-bar-canvas" width="21" height="300"></canvas>
+			<div class="cp-bar-picker"></div>
+		</div>
+		<div class="cp-form">
+			<div class="cp-form-rgb">
+				<label>
+					<span>R</span>
+					<input type="number" value="0">
+				</label>
+				<label>
+					<span>G</span>
+					<input type="number" value="255">
+				</label>
+				<label>
+					<span>B</span>
+					<input type="number" value="255">
+				</label>
+			</div>
+			<div class="cp-form-hsl">
+				<label>
+					<span>H</span>
+					<input type="number" value="0.5">
+				</label>
+				<label>
+					<span>S</span>
+					<input type="number" value="0.1">
+				</label>
+				<label>
+					<span>L</span>
+					<input type="number" value="0.8">
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<script src="../lib/jquery/dist/jquery.js"></script>
+	<script src="js/color-picker.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
