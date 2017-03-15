@@ -5,11 +5,12 @@ $(function() {
 		cpBarCvs: $('.cp-bar canvas')[0],
 		cpPanelCvs: $('.cp-panel canvas')[0],
 		cpBarPicker: $('.cp-bar-picker')[0],
-		cpPanelPicker: $('.cp-panel-picker')[0]
+		cpPanelPicker: $('.cp-panel-picker')[0],
+		cpForm: $('.cp-form')[0]
 	});
 	cp.on('change', function(color) {
 
-		$('body').css({ background: color.rgba })
+		console.log(color);
 	})
 	window.cp = cp;
 });

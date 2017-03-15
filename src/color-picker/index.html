@@ -15,36 +15,47 @@
 			<canvas class="cp-bar-canvas" width="21" height="300"></canvas>
 			<div class="cp-bar-picker"></div>
 		</div>
-		<div class="cp-form">
+		<form class="cp-form">
 			<div class="cp-form-rgb">
 				<label>
 					<span>R</span>
-					<input type="number" value="0">
+					<input type="number" value="0" name="cp-form-r">
 				</label>
 				<label>
 					<span>G</span>
-					<input type="number" value="255">
+					<input type="number" value="255" name="cp-form-g">
 				</label>
 				<label>
 					<span>B</span>
-					<input type="number" value="255">
+					<input type="number" value="255" name="cp-form-b">
+				</label>
+				<label>
+					<span>A</span>
+					<input type="number" value="255" name="cp-form-a">
+				</label>
+			</div>
+			<div class="cp-form-hex">
+				<label>
+					<span>HEX</span>
+					<input type="text" value="#000000" name="cp-form-hex">
 				</label>
 			</div>
 			<div class="cp-form-hsl">
 				<label>
 					<span>H</span>
-					<input type="number" value="0.5">
+					<input type="number" value="0.5" name="cp-form-h">
 				</label>
 				<label>
 					<span>S</span>
-					<input type="number" value="0.1">
+					<input type="number" value="0.1" name="cp-form-s">
 				</label>
 				<label>
 					<span>L</span>
-					<input type="number" value="0.8">
+					<input type="number" value="0.8" name="cp-form-l">
 				</label>
 			</div>
-		</div>
+			<input class="cp-form-result" name="cp-form-result" disabled="disabled">
+		</form>
 	</div>
 
 	<script src="../lib/jquery/dist/jquery.js"></script>

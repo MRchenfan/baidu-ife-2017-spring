@@ -66,7 +66,8 @@
 			cpBarCvs: null,
 			cpPanelCvs: null,
 			cpBarPicker: null,
-			cpPanelPicker: null
+			cpPanelPicker: null,
+			cpForm: null,
 		};
 		EventEmitter.call(this);
 		this.cfg = extend(cfg, _cfg);
@@ -80,7 +81,6 @@
 			hsl: ''
 		};
 		this.init();
-		console.log(this.cfg);
 	};
 
 	var fn = ColorPicker.prototype = new EventEmitter();
@@ -102,13 +102,22 @@
 		this.cfg.cpPanelPicker.style.left = 20;
 		this.cfg.cpPanelPicker.style.top = 20;
 
-		// init.color
-		var initColor = _getImageRgba(20, 20, this.cfg.cpPanelCvs);
-		this.color.r = initColor.r;
-		this.color.g = initColor.g;
-		this.color.b = initColor.b;
-		this.color.a = initColor.a;
-		this.color.rgba = initColor.rgba;
+		this.getColor();
+		this.renderForm();
+	};
+
+	fn.renderForm = function() {
+
+		this.cfg.cpForm['cp-form-r'].value = this.color.r;
+		this.cfg.cpForm['cp-form-g'].value = this.color.g;
+		this.cfg.cpForm['cp-form-b'].value = this.color.b;
+		this.cfg.cpForm['cp-form-a'].value = this.color.a;
+		this.cfg.cpForm['cp-form-hex'].value = this.color.hex;
+		this.cfg.cpForm['cp-form-h'].value = this.color.h;
+		this.cfg.cpForm['cp-form-s'].value = this.color.s;
+		this.cfg.cpForm['cp-form-l'].value = this.color.l;
+		this.cfg.cpForm['cp-form-result'].style.background = this.color.rgba;
+		return this;
 	};
 
 	fn.bind = function() {
@@ -129,13 +138,16 @@
 
 			var x = e.offsetX;
 			var y = e.offsetY;
-			console.log(x, y);
 			self.cfg.cpPanelPicker.style.left = x;
 			self.cfg.cpPanelPicker.style.top = y;
 			self.emit('change', self.getColor());
 		};
 
 		// cp-form
+		this.on('change', function() {
+
+			self.renderForm();
+		})
 	};
 
 	fn.getColor = function() {
@@ -145,11 +157,16 @@
 		x = parseInt(x);
 		y = parseInt(y);
 		var initColor = _getImageRgba(x, y, this.cfg.cpPanelCvs);
+		var hsl = rgb2hsl(initColor.r, initColor.g, initColor.b);
 		this.color.r = initColor.r;
 		this.color.g = initColor.g;
 		this.color.b = initColor.b;
 		this.color.a = initColor.a;
 		this.color.rgba = initColor.rgba;
+		this.color.hex = rgb2hex(initColor.r, initColor.g, initColor.b);
+		this.color.h = hsl.h;
+		this.color.s = hsl.s;
+		this.color.l = hsl.l;
 		return this.color;
 	}
 
@@ -161,7 +178,6 @@
 	function _renderColorBar(cvs) {
 		var cvsW = cvs.offsetWidth;
 		var cvsH = cvs.offsetHeight;
-		console.log(cvsW, cvsH);
 
 		cvs.width = cvsW;
 		cvs.height = cvsH;
@@ -187,7 +203,6 @@
 
 		var cvsW = cvs.offsetWidth;
 		var cvsH = cvs.offsetHeight;
-		console.log(cvsW, cvsH);
 
 		cvs.width = cvsW;
 		cvs.height = cvsH;
@@ -227,7 +242,6 @@
 			base: 'rgba(' + r + ', ' + g + ', ' + b + ', 1)',
 			data: imgData.data
 		};
-
 	}
 
 	// utils
@@ -243,6 +257,64 @@
 		}
 		return result;
 	};
+
+	function rgb2hsl(r, g, b) {
+
+		var hsl = {};
+		// step-1:
+		r = (r / 255).toFixed(2);
+		g = (g / 255).toFixed(2);
+		b = (b / 255).toFixed(2);
+		// step-2: 
+		var max = Math.max(r, g, b);
+		var min = Math.min(r, g, b);
+		// step-3: 
+		hsl.l = ((max + min) / 2).toFixed(2);
+		// step-4:
+		if (max === min) {
+			hsl.s = 0;
+		} else {
+
+			if (hsl.l < 0.5) hsl.s = ((max - min) / (max + min)).toFixed(2);
+			else hsl.s = ((max - min) / (2.0 - max - min)).toFixed(2);
+		}
+		// step-5:
+		hsl.h = 0;
+		if (r === max) hsl.h = ((g - b) / (max - min)).toFixed(2);
+		if (g === max) hsl.h = (2.0 + (b - r) / (max - min)).toFixed(2);
+		if (b === max) hsl.h = (4.0 + (r-g) / (max - min)).toFixed(2);
+		hsl.h *= 60.0;
+		if (hsl.h < 0) hsl.h += 360;
+		return hsl;
+	}
+
+	function rgb2hex(r, g, b) {
+		var hex = '#';
+		hex += rightPad(r.toString(16), 2);
+		hex += rightPad(g.toString(16), 2);
+		hex += rightPad(b.toString(16), 2);
+		hex = hex.toUpperCase();
+		return hex;
+	}
+
+	/**
+	 * [rightPad description]
+	 * @param  {string} str  [description]
+	 * @param  {number} len  length
+	 * @param  {string || number} fill [description]
+	 * @return {string}      [description]
+	 */
+	function rightPad(str, len, fill) {
+		str = str.toString();
+		fill = fill ? fill : '0';
+		for (var i = str.length; i < len; i++) {
+			str = fill + str;
+		}
+		if (str.length > len) {
+			str = str.substr(0, len);
+		}
+		return str;
+	}
 
 	return ColorPicker;
 }));
