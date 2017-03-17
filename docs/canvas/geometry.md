@@ -47,6 +47,12 @@ var path2D = new Path2D();
 // ctx.fill(path2D)
 ```
 
+### 裁切路径
+```js
+ctx.clip()
+```
+类似fill, stroke,但是clip后可以作为状态保存起来
+
 
 
 
